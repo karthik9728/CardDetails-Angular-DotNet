@@ -21,9 +21,9 @@ namespace Cards.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(Card))]
-        public async IActionResult GetAllCardsDetails()
+        public IActionResult GetAllCardsDetails()
         {
-            IEnumerable<Card> objCardList = await _db.Card.GetAll();
+            IEnumerable<Card> objCardList = _db.Card.GetAll();
             return Ok(objCardList);
         }
 
@@ -37,9 +37,9 @@ namespace Cards.API.Controllers
         [ProducesResponseType(200, Type = typeof(Card))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async IActionResult GetCardDetail(Guid id)
+        public IActionResult GetCardDetail(Guid id)
         {
-            var obj = await _db.Card.GetFirstOrDefault(x => x.Id == id);
+            var obj = _db.Card.GetFirstOrDefault(x => x.Id == id);
             if (obj == null)
             {
                 return NotFound();

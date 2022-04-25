@@ -15,13 +15,22 @@ builder.Services.AddSwaggerGen();
 
 
 #region Database Connectivity
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
 #endregion
+
+#region
+builder.Services.AddCors((setup) =>
+{
+    setup.AddPolicy("default", (options) =>
+    {
+        options.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+    });
+});
+#endregion
+
 
 #region Register Repository
 //builder.Services.AddScoped<ICardRepository, CardRepository>();
@@ -39,6 +48,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("default");
 
 app.UseHttpsRedirection();
 
