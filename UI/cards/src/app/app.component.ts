@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
     this.cardsService.getAllCards().subscribe(
       responce => {
         this.cards = responce;
-        console.log(this.cards);
+        //console.log(this.cards);
       }
     );
   }
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
             expiryMonth:'',
             expiryYear:''
           }
-          console.log(responce);
+          //console.log(responce);
           this.getAllCards();
         } 
       ); 
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
   deleteCard(id:string){
     this.cardsService.deleteCard(id).subscribe(
       responce=>{
-        console.log(responce);
+        //console.log(responce);
         this.getAllCards();
       }
     );
@@ -76,6 +76,14 @@ export class AppComponent implements OnInit {
     this.cardsService.updateCard(card).subscribe(
       responce=>{
         this.getAllCards();
+        this.card = {
+          id:'',
+          cardHolderName:'',
+          cardNumber:'',
+          cvc:'',
+          expiryMonth:'',
+          expiryYear:''
+        }
       }
     );
   }
