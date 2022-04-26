@@ -84,6 +84,7 @@ form button{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 2px;
 }
 
 .card-row-action a{
@@ -91,5 +92,20 @@ form button{
     cursor: pointer;
     padding: 1em;
     background-color: #ef5350;
+    color: white;
+}
+
+.card-row-action-green{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.card-row-action-green a{
+    display: block;
+    cursor: pointer;
+    padding: 1em;
+    background-color: green;
     color: white;
 }
